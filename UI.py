@@ -23,9 +23,9 @@ def transaction_form(last_transaction_id, last_balance):
         st.write(f"**Auto-generated Transaction ID:** {next_transaction_id}")
         trans_date = st.date_input("Transaction Date")
         credit = st.number_input("Credit Amount", min_value=0.0, format="%.2f")
-        credit_desc = st.text_input("Credit Description")  # Case-sensitive
+        credit_desc = st.text_input("Credit Description")  
         debit = st.number_input("Debit Amount", min_value=0.0, format="%.2f")
-        debit_desc = st.text_input("Debit Description")  # Case-sensitive
+        debit_desc = st.text_input("Debit Description")  
 
         new_balance = last_balance + credit - debit
         st.write(f"**Updated Total Balance:** {new_balance:.2f}")
@@ -37,9 +37,9 @@ def transaction_form(last_transaction_id, last_balance):
             'Transaction_ID': next_transaction_id,
             'Transaction_Date': trans_date,
             'Credit': credit,
-            'Credit_Description': credit_desc,  # Retains case sensitivity
+            'Credit_Description': credit_desc,  
             'Debit': debit,
-            'Debit_Description': debit_desc,  # Retains case sensitivity
+            'Debit_Description': debit_desc,  
             'Total_Balance': new_balance
         }
     
