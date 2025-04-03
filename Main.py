@@ -38,9 +38,8 @@ header_section()
 
 df = st.session_state['transactions']
 
-# **TOP SECTION: FORM & TRANSACTIONS TABLE**
 st.markdown("### 📌 Add Transaction & View Data")
-col1, col2 = st.columns([1, 2])  # Form on left, Table on right
+col1, col2 = st.columns([1, 2]) 
 
 with col1:
     st.subheader("➕ Add New Transaction")
