@@ -6,7 +6,6 @@ from UI import (
     visualize_data, delete_transaction_form, footer_section
 )
 
-
 FILE_PATH = ""
 
 st.set_page_config(page_title="My MoneyManage Dashboard", layout="wide")
@@ -106,26 +105,24 @@ else:
     st.info("No transactions available for analysis.")
 
 def set_target_goal():
-    """Allow users to set a target spending limit and track progress."""
     st.subheader("🎯 Set Target Goal")
     if 'target_goal' not in st.session_state:
         st.session_state['target_goal'] = 0.0
     target = st.number_input("Enter your spending limit ($)", 
                              min_value=0.0, 
-                             value=float(st.session_state['target_goal']),  # Ensure float
+                             value=float(st.session_state['target_goal']),  
                              step=100.0)
     if st.button("Set Goal"):
         st.session_state['target_goal'] = target
         st.success(f"Target spending limit set to ${target:,.2f}")
 
 def spending_stop_recommender(df):
-    """Check spending against the target goal and display warnings accordingly."""
     if 'target_goal' in st.session_state and st.session_state['target_goal'] > 0:
         total_debit = df['Debit'].sum()
         target = st.session_state['target_goal']
         
         st.subheader("📊 Spending Progress")
-        progress = min(total_debit / target, 1.0)  # Cap at 100%
+        progress = min(total_debit / target, 1.0)
         st.progress(progress)
         
         if total_debit >= target:
